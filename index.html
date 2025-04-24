@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Um pedido especial para Maria com amor e música.">
+  <title>Pedido para Maria 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-escuro: #0A1B2F;
+      --azul-principal: #1A2842;
+      --azul-claro: #3B5678;
+      --verde: #28A745;
+      --vermelho: #DC3545;
+      --branco: #F5F6F5;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--azul-escuro), var(--azul-principal), var(--azul-claro));
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 40px var(--shadow);
+      backdrop-filter: blur(12px);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      animation: float 5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-10px);
+    }
+
+    h1 {
+      color: var(--branco);
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      text-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .video-container {
+      margin-bottom: 1.5rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      max-height: 300px; /* Same as previous image */
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1.5rem;
+      position: relative;
+      min-height: 60px;
+    }
+
+    button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 2rem;
+      color: var(--branco);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    button:focus {
+      outline: 3px solid var(--branco);
+      outline-offset: 2px;
+    }
+
+    #sim {
+      background: var(--verde);
+    }
+
+    #sim:hover, #sim:focus {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 20px var(--verde);
+    }
+
+    #nao {
+      background: var(--vermelho);
+      transition: all 0.2s ease;
+    }
+
+    #nao:hover, #nao:focus {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 20px var(--vermelho);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2.5rem;
+      pointer-events: none;
+      animation: up 1.5s ease forwards;
+      z-index: 10;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: var(--branco);
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .modal-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-content button {
+      background: var(--verde);
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      color: var(--branco);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes up {
+      0% { transform: translate(-50%, 0) scale(0.8); opacity: 1; }
+      100% { transform: translate(-50%, -250px) scale(1.3); opacity: 0; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .container { padding: 1.5rem; }
+      h1 { font-size: 1.4rem; }
+      button { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+      .video-container video { max-height: 200px; } /* Same as previous image */
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Audio -->
+  <audio id="background-audio" autoplay loop hidden>
+    <source src="Jorge_e_Mateus_A_Hora_e_Agora_Cortado.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <h1>Maria, vem ser o céu do meu mar que eu prometo pra sempre te amar!</h1>
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-04-24 at 09.09.35_2d9c66d1.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+      </video>
+    </div>
+    <div class="buttons">
+      <button id="sim" aria-label="Aceitar o pedido">Estou indo 💖</button>
+      <button id="nao" aria-label="Recusar o pedido">Sai seboso</button>
+    </div>
+  </div>
+
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <p>Agora é oficial! Te amo, minha princesa! 💙</p>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    const btnNao = document.getElementById('nao');
+    const btnSim = document.getElementById('sim');
+    const container = document.querySelector('.container');
+    const modal = document.getElementById('successModal');
+    const audio = document.getElementById('background-audio');
+    const video = document.querySelector('video');
+
+    // Handle autoplay restrictions for audio and video
+    document.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(err => console.log('Audio autoplay blocked:', err));
+      }
+      if (video.paused) {
+        video.play().catch(err => console.log('Video autoplay blocked:', err));
+      }
+    });
+
+    // Debounce function for "No" button movement
+    function debounce(fn, delay) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+      };
+    }
+
+    // Move "No" button on hover
+    btnNao.addEventListener('mouseenter', debounce(() => {
+      const containerRect = container.getBoundingClientRect();
+      const btnRect = btnNao.getBoundingClientRect();
+      const maxX = containerRect.width - btnRect.width;
+      const maxY = containerRect.height - btnRect.height - 60;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      btnNao.style.position = 'absolute';
+      btnNao.style.left = `${randomX}px`;
+      btnNao.style.top = `${randomY}px`;
+    }, 100));
+
+    // Show hearts and modal on "Yes" click
+    btnSim.addEventListener('click', () => {
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = '💜';
+        heart.style.left = `${50 + (Math.random() * 50 - 25)}%`;
+        heart.style.top = '60%';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+      }
+      setTimeout(() => {
+        modal.style.display = 'flex';
+      }, 600);
+    });
+
+    // Close modal
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    // Close modal on Esc key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
